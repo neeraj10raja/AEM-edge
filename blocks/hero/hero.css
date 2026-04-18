@@ -4,132 +4,135 @@
 }
 
 .hero {
+  background-color: #000;
+  overflow: hidden;
   position: relative;
-  min-height: 600px;
+}
+
+/* ── Split layout (text left, image right) ── */
+.hero.hero-split > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  min-height: 500px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  gap: 40px;
+  box-sizing: border-box;
+}
+
+.hero.hero-split .hero-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero.hero-split .hero-image img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  border-radius: 12px;
+}
+
+/* ── Centered layout (text only) ── */
+.hero.hero-centered > div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 60px 24px 48px;
   text-align: center;
-  overflow: hidden;
-  background-color: #000;
-}
-
-/* dark variant (default) */
-.hero h1,
-.hero h2,
-.hero p {
-  color: #f5f5f7;
-  position: relative;
-  z-index: 1;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero h1 {
-  font-size: clamp(40px, 6vw, 80px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 6px;
-}
-
-.hero h2 {
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: 400;
-  letter-spacing: 0;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  font-size: 17px;
-  color: #86868b;
-}
-
-.hero p.button-wrapper {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  padding: 80px 40px;
+  min-height: 500px;
   justify-content: center;
-  z-index: 1;
   position: relative;
+  z-index: 1;
 }
 
-.hero a.button {
-  font-size: 17px;
-  padding: 8px 18px;
-  border-radius: 980px;
-  font-weight: 400;
+/* ── Background image ── */
+.hero picture.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
 
-.hero a.button.primary {
-  background-color: #0071e3;
-  border-color: #0071e3;
-  color: #fff;
+.hero picture.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.hero a.button.primary:hover {
-  background-color: #0077ed;
-  border-color: #0077ed;
-}
-
-.hero a.button.secondary {
-  background-color: transparent;
-  border-color: rgba(255,255,255,0.4);
+/* ── Text styles ── */
+.hero .hero-text h1,
+.hero .hero-centered h1 {
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: #f5f5f7;
+  margin: 0 0 12px;
 }
 
-/* light variant */
+.hero .hero-text h2,
+.hero .hero-centered h2 {
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 400;
+  color: #f5f5f7;
+  margin: 0 0 20px;
+  letter-spacing: -0.01em;
+}
+
+.hero .hero-text p,
+.hero .hero-centered p {
+  color: #86868b;
+  font-size: 17px;
+  margin: 0 0 12px;
+}
+
+.hero .hero-text a,
+.hero .hero-centered a {
+  display: inline-block;
+  font-size: 17px;
+  color: #2997ff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.hero .hero-text a:hover,
+.hero .hero-centered a:hover {
+  text-decoration: underline;
+}
+
+/* ── Light variant ── */
 .hero.light {
   background-color: #f5f5f7;
 }
 
-.hero.light h1,
-.hero.light h2 {
+.hero.light .hero-text h1,
+.hero.light .hero-text h2,
+.hero.light .hero-centered h1,
+.hero.light .hero-centered h2 {
   color: #1d1d1f;
 }
 
-.hero.light p {
+.hero.light .hero-text p,
+.hero.light .hero-centered p {
   color: #6e6e73;
 }
 
-.hero.light a.button.secondary {
-  border-color: rgba(0,0,0,0.3);
-  color: #1d1d1f;
+.hero.light .hero-text a,
+.hero.light .hero-centered a {
+  color: #0066cc;
 }
 
-/* background image */
-.hero picture {
-  position: absolute;
-  z-index: 0;
-  inset: 0;
-}
+/* ── Mobile ── */
+@media (width < 768px) {
+  .hero.hero-split > div {
+    grid-template-columns: 1fr;
+    padding: 48px 24px;
+    text-align: center;
+  }
 
-.hero picture img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-}
-
-/* product image centered below text */
-.hero .hero-product-image {
-  position: relative;
-  z-index: 1;
-  margin-top: 32px;
-  max-width: 900px;
-  width: 100%;
-}
-
-.hero .hero-product-image img {
-  width: 100%;
-  height: auto;
-}
-
-@media (width >= 900px) {
-  .hero {
-    min-height: 700px;
-    padding: 80px 32px 64px;
+  .hero.hero-centered > div {
+    padding: 60px 24px;
   }
 }
