@@ -9,6 +9,19 @@
   position: relative;
 }
 
+/* ── Background image ── */
+.hero picture.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero picture.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ── Split layout (text left, image right) ── */
 .hero.hero-split > div {
   display: grid;
@@ -46,19 +59,6 @@
   justify-content: center;
   position: relative;
   z-index: 1;
-}
-
-/* ── Background image ── */
-.hero picture.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-}
-
-.hero picture.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* ── Text styles ── */
@@ -121,7 +121,7 @@
 
 .hero.light .hero-text a,
 .hero.light .hero-centered a {
-  color: #0066cc;
+  color: #06c;
 }
 
 /* ── Mobile ── */

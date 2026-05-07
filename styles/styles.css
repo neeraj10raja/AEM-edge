@@ -17,14 +17,14 @@
   --dark-color: #1d1d1f;
   --text-color: #1d1d1f;
   --text-secondary-color: #6e6e73;
-  --link-color: #0066cc;
-  --link-hover-color: #004499;
+  --link-color: #06c;
+  --link-hover-color: #049;
   --apple-blue: #0071e3;
   --apple-blue-hover: #0077ed;
 
   /* fonts - Apple SF Pro */
-  --body-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
-  --heading-font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+  --body-font-family: -apple-system, blinkmacsystemfont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  --heading-font-family: -apple-system, blinkmacsystemfont, "SF Pro Display", "Helvetica Neue", sans-serif;
 
   /* body sizes */
   --body-font-size-m: 17px;
@@ -43,26 +43,6 @@
   --nav-height: 44px;
 }
 
-/* Apple-style button overrides */
-a.button:any-link,
-button.button {
-  border-radius: 980px;
-  font-size: var(--body-font-size-s);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-}
-
-a.button.accent,
-button.button.accent {
-  border-color: var(--apple-blue);
-  background-color: var(--apple-blue);
-}
-
-a.button.accent:hover,
-button.button.accent:hover {
-  border-color: var(--apple-blue-hover);
-  background-color: var(--apple-blue-hover);
-}
 
 @media (width >= 900px) {
   :root {
@@ -190,10 +170,12 @@ button.button {
   max-width: 100%;
   margin: 0;
   border: 2px solid transparent;
-  border-radius: 2.4em;
+  border-radius: 980px;
   padding: 0.5em 1.2em;
   font: inherit;
-  font-weight: 500;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  letter-spacing: -0.01em;
   line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
@@ -265,8 +247,8 @@ button.button.secondary:disabled:focus-visible {
 /* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
+  border-color: var(--apple-blue);
+  background-color: var(--apple-blue);
   color: var(--background-color);
 }
 
@@ -274,8 +256,8 @@ a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  border-color: var(--apple-blue-hover);
+  background-color: var(--apple-blue-hover);
 }
 
 a.button.accent[aria-disabled="true"],
