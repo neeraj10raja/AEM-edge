@@ -17,7 +17,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['tools/**/*.js'],
+      files: ['tools/**/*.js', 'perf-agent/**/*.js'],
       env: {
         browser: false,
         node: true,
