@@ -149,7 +149,7 @@ async function handleRegression(regression, commits, diffs, config, context) {
   }
 
   let result;
-  if (config.auto_fix_enabled && diagnosisResult.fix) {
+  if (config.auto_fix_enabled && diagnosisResult.confidence === 'high' && diagnosisResult.fix) {
     const titlePrefix = `perf: CWV regression on ${urlPath}`;
     const alreadyOpen = await checkOpenPRs(owner, repo, { titlePrefix }, token);
     if (alreadyOpen) {

@@ -11,11 +11,11 @@
     "lcp_increase_ms": 500,
     "score_drop": 5
   },
-  "lookback_hours": 1,
+  "lookback_hours": 48,
   "default_branch": "main",
   "model": "gpt-4o",
   "ai_diagnosis_enabled": true,
-  "auto_fix_enabled": true,
+  "auto_fix_enabled": false,
   "require_psi_api_key": true,
   "preview_poll": {
     "timeout_ms": 180000,

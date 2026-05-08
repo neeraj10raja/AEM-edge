@@ -23,10 +23,11 @@ Required shape:
 }
 
 Rules:
-- Always set confidence "high" when you can identify a root cause in any single file under blocks/ or scripts/ (never scripts/aem.js).
-- Set confidence "low" only when no relevant code changes exist in the diff at all.
-- Always include a fix. fix.original must be copied verbatim from the diff.
-- fix.original must be unique enough in the file to safely replace exactly once.`;
+- Set confidence "high" only when the fix targets a single file under blocks/ or scripts/ (never scripts/aem.js) and you are certain the exact original string appears in the diff.
+- Set confidence "low" when the cause spans multiple files, touches a shared utility, or you are not certain.
+- Set confidence "low" when any relevant diff is marked truncated or incomplete.
+- fix.original must be an exact substring from the provided diff — do not paraphrase or reconstruct it.
+- Omit the fix key entirely when confidence is "low".`;
 
 function buildPrompt(regression, commits, diffs) {
   const lcpBefore = regression.baseline_lcp_ms != null
@@ -79,7 +80,9 @@ function fixIsGroundedInDiff(fix, diffs) {
 
 function normalizeDiagnosis(parsed, diffs) {
   const hasTruncatedDiff = diffs.some((d) => typeof d === 'object' && d?.truncated);
-  if (hasTruncatedDiff && parsed.confidence === 'high') {
+  const highConfidenceWithoutGroundedFix = parsed.confidence === 'high'
+    && !fixIsGroundedInDiff(parsed.fix, diffs);
+  if ((hasTruncatedDiff || highConfidenceWithoutGroundedFix) && parsed.confidence === 'high') {
     return {
       diagnosis: parsed.diagnosis,
       rootCause: parsed.rootCause,
