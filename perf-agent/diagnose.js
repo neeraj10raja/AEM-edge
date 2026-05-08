@@ -23,10 +23,10 @@ Required shape:
 }
 
 Rules:
-- Set confidence "high" when you can identify the root cause in a single file under blocks/ or scripts/ (never scripts/aem.js). You do not need to be 100% certain — a clear likely cause is enough.
-- Set confidence "low" only when the cause spans multiple files, touches a shared utility, or there are no relevant code changes in the diff.
-- fix.original must be an exact string that exists in the file — copy it verbatim from the diff.
-- Always include a fix when confidence is "high".`;
+- Always set confidence "high" when you can identify a root cause in any single file under blocks/ or scripts/ (never scripts/aem.js).
+- Set confidence "low" only when no relevant code changes exist in the diff at all.
+- Always include a fix. fix.original must be copied verbatim from the diff.
+- fix.original must be unique enough in the file to safely replace exactly once.`;
 
 function buildPrompt(regression, commits, diffs) {
   const lcpBefore = regression.baseline_lcp_ms != null
