@@ -1,5 +1,5 @@
 {
-  "site_url": "https://main--AEM-edge--neeraj10raja.aem.page",
+  "site_url": "https://main--aem-edge--neeraj10raja.aem.page",
   "paths": [
     "/"
   ],
@@ -15,7 +15,7 @@
   "default_branch": "main",
   "model": "gpt-4o",
   "ai_diagnosis_enabled": true,
-  "auto_fix_enabled": false,
+  "auto_fix_enabled": true,
   "require_psi_api_key": true,
   "preview_poll": {
     "timeout_ms": 180000,

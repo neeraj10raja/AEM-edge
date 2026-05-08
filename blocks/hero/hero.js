@@ -27,4 +27,6 @@ export default function decorate(block) {
       p.remove();
     }
   });
+
+  block.querySelectorAll('img').forEach((img) => { img.loading = 'lazy'; });
 }
