@@ -11,7 +11,7 @@
     "lcp_increase_ms": 500,
     "score_drop": 5
   },
-  "lookback_hours": 48,
+  "lookback_hours": 1,
   "default_branch": "main",
   "model": "gpt-4o",
   "ai_diagnosis_enabled": true,
