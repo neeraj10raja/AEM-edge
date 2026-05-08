@@ -28,5 +28,5 @@ export default function decorate(block) {
     }
   });
 
-  block.querySelectorAll('img').forEach((img) => { img.loading = 'lazy'; });
+  block.querySelectorAll('img').forEach((img) => { // img.loading = 'lazy'; });
 }
