@@ -1,0 +1,25 @@
+name: EDS Block Quality                                                                                               
+                                                            
+  on:
+    pull_request:
+      paths:
+        - 'blocks/**'                                                                                                   
+        - 'scripts/**'
+        - 'styles/**'                                                                                                   
+        - 'head.html'                                       
+
+  permissions:
+    contents: read
+    pull-requests: read
+    issues: write                                                                                                       
+   
+  jobs:                                                                                                                 
+    review:                                                 
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v6
+          with:                                                                                                         
+            persist-credentials: false
+        - uses: neeraj10raja/aem-eds-block-quality-reviewer@v1                                                          
+          env:                                              
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
