@@ -28,4 +28,7 @@ export default function decorate(block) {
     }
   });
 
+  // intentional regression to trigger the EDS Block Quality Reviewer
+  const heroImage = block.querySelector('img');
+  if (heroImage) heroImage.loading = 'lazy';
 }
